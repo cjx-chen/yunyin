@@ -1,0 +1,18 @@
+var getText1 = function(text){
+  if(text != null){
+    var text1 = text.split('\n')[0];
+    return text1;
+  }
+}
+
+var getText2 = function(text){
+  if(text != null){
+    var text2 = text.split('\n')[1];
+    return text2;
+  }
+}
+
+module.exports = {
+  getText1: getText1,
+  getText2: getText2,
+}

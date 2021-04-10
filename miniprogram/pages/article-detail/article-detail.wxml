@@ -1,0 +1,14 @@
+<!--pages/article-detail/article-detail.wxml-->
+<!-- 文章详情 -->
+<view class="article-block" wx:for="{{ ArticleDetails }}" wx:key="index" wx:if="{{ ArticleId==item.article_id }}">
+  <!-- 文章标题 -->
+  <view class="article-title">
+    {{ item.title }}
+  </view>
+  <!-- 文章发布时间 -->
+  <view class="article-time">{{ item.release_time }}</view>
+  <!-- 文章图片 -->
+  <image class="article-image" src="{{ item.image }}"></image>
+  <!-- 文章内容 -->
+  <view class="article-content">{{ item.text }}</view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/home/home.wxml-->
+<wxs src="./home.wxs" module="wxs"></wxs>
+
+<view class="home-block">
+  <!-- 顶部搜索框 -->
+  <van-search 
+    value="{{ value }}" 
+    placeholder="请输入搜索关键字" 
+    shape="round"
+    show-action
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+    />
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" autoplay="true" class="swiper" bindchange="swiperChange">
+    <block wx:for="{{ swiperImgUrls }}" wx:key="url" wx:for-index="url">
+      <swiper-item>
+        <image src="{{ item.url }}" mode="widthFix" class="swiperImg"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 每日短句 -->
+  <view class="sentence-block" wx:if="{{ EveryDaySentenceList }}" wx:key="{{banner_index}}" bindchange="swiperChange">
+    <view class="sentence-title">{{ wxs.getText1(EveryDaySentenceList[banner_index].text) }}</view>
+    <view class="sentence-detail">{{ wxs.getText2(EveryDaySentenceList[banner_index].text) }}</view>
+  </view>
+  <!-- 听筒 -->
+  <!-- 每日文章 -->
+  <view class="article-block" wx:for="{{ ArticleList }}" wx:key="index" bindtap="gotoArticleDetail" data-articleid="{{ item.article_id }}">
+    <!-- <van-divider /> -->
+    <view class="article-text">
+      <view class="article-title">{{ item.title }}</view>
+      <view class="article-time">{{ item.release_time }}</view>
+    </view>
+    <image class="article-image" src="{{ item.image }}"></image>
+  </view>
+</view>
